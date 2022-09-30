@@ -1,4 +1,4 @@
-FROM ubuntu:20.04.5
+FROM ubuntu:20.04
 LABEL maintainer="angel@ninjacom.space"
 ARG DEBIAN_FRONTEND=noninteractive
 
