@@ -4,7 +4,7 @@ Image for docker based on Ubuntu with utilities for running Elixir and Phoenix. 
 
 This image works with the following versions:
 
-- OS: Ubuntu 20.04.5
+- OS: Ubuntu 20.04
 - NodeJS: 14.17.6
 - Elixir: 1.12.3
 - Phoenix framework: 1.5.12
