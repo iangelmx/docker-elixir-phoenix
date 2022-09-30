@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04.5
 LABEL maintainer="angel@ninjacom.space"
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -16,7 +16,7 @@ RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkh
 RUN tar xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN mv wkhtmltox/bin/wkhtmlto* /usr/bin/
 RUN rm -rf wkhtmltox
-## Add Asdf
+## Add asdf
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 RUN cd ~/.asdf && git checkout "$(git describe --abbrev=0 --tags)"
 ENV PATH /root/.asdf/bin:/root/.asdf/shims:${PATH}
