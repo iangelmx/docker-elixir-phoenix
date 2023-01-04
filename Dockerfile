@@ -8,9 +8,11 @@ ENV NODE_VERSION=14.17.6
 ENV PHOENIX_VERSION=1.5.14
 
 ## Adds required deps
-RUN apt update
-RUN apt install -y curl git
-RUN apt install -y wget build-essential autoconf m4 libncurses5-dev libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev openjdk-11-jdk libsctp-dev lksctp-tools
+RUN apt-get update
+RUN apt-get install -y curl git
+RUN apt-get install -y wget build-essential autoconf m4 libncurses5-dev libssh-dev unixodbc-dev
+## GNOME XML
+RUN apt-get install -y xsltproc fop libxml2-utils libsctp-dev lksctp-tools
 # Adds WKHTMLTOPDF
 RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN tar xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
@@ -47,3 +49,8 @@ RUN apt-get install -y inotify-tools
 RUN /bin/bash -c "mix local.hex --force"
 RUN /bin/bash -c "mix local.rebar --force"
 RUN /bin/bash -c "mix archive.install --force hex phx_new $PHOENIX_VERSION"
+
+## Cleaning cache
+RUN apt-get clean
+RUN apt-get autoclean
+RUN apt-get autoremove
