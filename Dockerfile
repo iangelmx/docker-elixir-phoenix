@@ -8,11 +8,11 @@ ENV NODE_VERSION=14.17.6
 ENV PHOENIX_VERSION=1.5.14
 
 ## Adds required deps
-RUN apt update
-RUN apt install -y curl git
-RUN apt install -y wget build-essential autoconf m4 libncurses5-dev libssh-dev unixodbc-dev
+RUN apt-get update
+RUN apt-get install -y curl git
+RUN apt-get install -y wget build-essential autoconf m4 libncurses5-dev libssh-dev unixodbc-dev
 ## GNOME XML
-RUN apt install -y xsltproc fop libxml2-utils libsctp-dev lksctp-tools
+RUN apt-get install -y xsltproc fop libxml2-utils libsctp-dev lksctp-tools
 # Adds WKHTMLTOPDF
 RUN wget https://github.com/wkhtmltopdf/wkhtmltopdf/releases/download/0.12.4/wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
 RUN tar xvf wkhtmltox-0.12.4_linux-generic-amd64.tar.xz
