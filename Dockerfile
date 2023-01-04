@@ -44,7 +44,7 @@ RUN /bin/bash -c "mix local.hex --force"
 RUN /bin/bash -c "mix local.rebar --force"
 RUN /bin/bash -c "mix archive.install --force hex phx_new $PHOENIX_VERSION"
 
-## Cleaning aou
+## Cleaning cache
 RUN apt-get clean
 RUN apt-get autoclean
 RUN apt-get autoremove
