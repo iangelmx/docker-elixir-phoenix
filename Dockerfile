@@ -13,7 +13,7 @@ RUN apt-get install -y curl git
 RUN apt-get install -y wget build-essential autoconf m4 libncurses5-dev libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev libsctp-dev lksctp-tools
 # Adds WKHTMLTOPDF
 RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb
-RUN sudo apt-get install -y ./wkhtmltox_0.12.6-1.focal_amd64.deb
+RUN apt-get install -y ./wkhtmltox_0.12.6-1.focal_amd64.deb
 ## Adds asdf
 RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 RUN cd ~/.asdf && git checkout "$(git describe --abbrev=0 --tags)"
