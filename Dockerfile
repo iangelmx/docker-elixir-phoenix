@@ -43,5 +43,6 @@ RUN /bin/bash -c "asdf global nodejs $NODE_VERSION"
 ## Final configurations
 RUN apt-get install -y inotify-tools
 RUN /bin/bash -c "mix local.hex --force"
+RUN /bin/bash -c "mix archive.install hex phx_new --force"
 RUN /bin/bash -c "mix local.rebar --force"
 RUN /bin/bash -c "mix archive.install --force hex phx_new $PHOENIX_VERSION"
