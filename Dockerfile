@@ -4,12 +4,12 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ENV ERLANG_VERSION=24.3.4.11
 ENV ELIXIR_VERSION=1.14.5-otp-24
-ENV PHOENIX_VERSION=1.7.6
+ENV PHOENIX_VERSION=1.7.10
 
 ## Adds required deps
 RUN apt-get update
-RUN apt-get install -y curl git
-RUN apt-get install -y wget build-essential autoconf m4 libncurses5-dev libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev libsctp-dev lksctp-tools
+RUN apt-get install -y curl git wget build-essential
+RUN apt-get install -y  autoconf m4 libncurses5-dev libwxgtk3.0-gtk3-dev libgl1-mesa-dev libglu1-mesa-dev libpng-dev libssh-dev unixodbc-dev xsltproc fop libxml2-utils libncurses-dev libsctp-dev lksctp-tools
 # Adds WKHTMLTOPDF
 RUN wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.focal_amd64.deb
 RUN apt-get install -y ./wkhtmltox_0.12.6-1.focal_amd64.deb
@@ -18,6 +18,10 @@ RUN git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 RUN cd ~/.asdf && git checkout "$(git describe --abbrev=0 --tags)"
 ENV PATH /root/.asdf/bin:/root/.asdf/shims:${PATH}
 RUN /bin/bash -c "source ~/.bashrc"
+## Cleans and upgrades libs
+RUN apt-get clean
+RUN apt-get autoclean
+RUN apt-get upgrade -y
 
 ## Adds Erlang
 RUN /bin/bash -c "asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang.git"
