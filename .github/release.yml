@@ -2,6 +2,7 @@
 
 changelog:
   categories:
+    - title: Summary
     - title: 🏕 Features
       labels:
         - '*'
