@@ -4,7 +4,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 ENV ERLANG_VERSION=22.3.4.22
 ENV ELIXIR_VERSION=1.12.3-otp-22
-ENV NODE_VERSION=14.17.6
 ENV PHOENIX_VERSION=1.5.14
 
 ## Adds required deps
@@ -38,11 +37,6 @@ RUN /bin/bash -c "asdf global erlang $ERLANG_VERSION"
 RUN /bin/bash -c "asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git"
 RUN /bin/bash -c "asdf install elixir $ELIXIR_VERSION"
 RUN /bin/bash -c "asdf global elixir $ELIXIR_VERSION"
-
-## Adds Nodejs
-RUN /bin/bash -c "asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git"
-RUN /bin/bash -c "asdf install nodejs $NODE_VERSION"
-RUN /bin/bash -c "asdf global nodejs $NODE_VERSION"
 
 ## Final configurations
 RUN apt-get install -y inotify-tools
